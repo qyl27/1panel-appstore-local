@@ -18,9 +18,9 @@ additionalProperties:
       type: text
     - default: ""
       edit: true
-      envKey: FORGEJO_RUNNER_SECRET
-      labelEn: Forgejo Runner Secret
-      labelZh: Forgejo Runner 注册密钥
+      envKey: FORGEJO_RUNNER_TOKEN
+      labelEn: Forgejo Runner Token
+      labelZh: Forgejo Runner 注册令牌
       required: true
       rule: paramComplexity
       type: password
