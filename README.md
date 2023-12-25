@@ -15,7 +15,7 @@ git clone https://github.com/qyl27/1panel-appstore-local.git
 ### 2、软连接存储库内的 `local` 目录到 1panel 的 `./resources/apps/local` 
 
 ```shell
-ln -s ./local /opt/1panel/resources/apps/local
+ln -s ./local /opt/1panel/resource/apps/local
 ```
 
 ### 3、在 1panel 中勾选显示本地应用，并刷新应用列表
