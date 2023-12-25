@@ -1,20 +1,36 @@
-# 1Panel 应用商店
+# 1Panel 本地应用商店
 
-[1Panel](https://github.com/1Panel-dev/1Panel) 应用商店的官方存储库，包含了所有可以在 [1Panel](https://github.com/1Panel-dev/1Panel) 应用商店安装的应用程序。
+[1Panel](https://github.com/1Panel-dev/1Panel)  应用商店的本地存储库，收录一些可能会被用到但官方商店未收录的项目。
 
-当前已上架的应用及其安装量信息请浏览：https://apps.fit2cloud.com/1panel
+（欢迎 PR 。）
 
-1Panel 应用商店应用上架的标准：
+## 食用方法
 
- - 知名且活跃的开源项目
- - 有相当规模的安装量
- - 官方提供 Docker 镜像
+### 1、Clone 本仓库到你喜欢的位置
 
-## 问题反馈
+```shell
+git clone https://github.com/qyl27/1panel-appstore-local.git
+```
 
-如果您在使用过程中遇到什么问题，或有进一步的需求需要反馈，请提交 GitHub Issue 到 [1Panel 项目的主仓库](https://github.com/1Panel-dev/1Panel/issues)
+### 2、软连接存储库内的 `local` 目录到 1panel 的 `./resources/apps/local` 
 
-## 制作本地应用
+```shell
+ln -s ./local /opt/1panel/resources/apps/local
+```
 
-[如何提交自己想要的应用](https://github.com/1Panel-dev/appstore/wiki/%E5%A6%82%E4%BD%95%E6%8F%90%E4%BA%A4%E8%87%AA%E5%B7%B1%E6%83%B3%E8%A6%81%E7%9A%84%E5%BA%94%E7%94%A8)
+### 3、在 1panel 中勾选显示本地应用，并刷新应用列表
+
+### 4、日常从 GitHub 上拉取最新提交
+
+```shell
+git pull
+```
+
+## 驾照
+
+继承自 [1panel-dev/appstore](https://github.com/1Panel-dev/appstore) 的 GPLv3。
+
+## Todo
+
+- [ ] 自动化接收上游软件 Docker 镜像更新。
 
