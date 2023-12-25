@@ -12,7 +12,7 @@
 git clone https://github.com/qyl27/1panel-appstore-local.git
 ```
 
-### 2、软连接存储库内的 `local` 目录到 1panel 的 `./resources/apps/local` 
+### 2、软连接存储库内的 `local` 目录到 1panel 的 `./resource/apps/local` 
 
 ```shell
 ln -s ./local /opt/1panel/resource/apps/local
