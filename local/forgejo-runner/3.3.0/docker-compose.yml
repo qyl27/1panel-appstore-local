@@ -3,15 +3,8 @@ services:
   forgejo-runner:
     image: code.forgejo.org/forgejo/runner:3.3.0
     container_name: ${CONTAINER_NAME}
-    links:
-      - docker_in_docker
-    environment:
-      DOCKER_HOST: tcp://docker-in-docker:2375
-    depends_on:
-      register:
-        condition: service_completed_successfully
     volumes:
-      - ./runner_data:/data
+      - forgejo-runner-data:/data
     command: "forgejo-runner --config config.yml daemon"
     labels:
       createdBy: "Apps"
@@ -19,38 +12,10 @@ services:
     networks:
       - 1panel-network
 
-  register:
-    image: code.forgejo.org/forgejo/runner:3.3.0
-    container_name: ${CONTAINER_NAME}-register
-    links:
-      - docker_in_docker
-    environment:
-      DOCKER_HOST: tcp://docker-in-docker:2375
-    volumes:
-      - ./runner_data:/data
-    user: 0:0
-    command: |
-        bash -ec '
-          while : ;
-          do
-            forgejo-runner create-runner-file --connect --instance "${FORGEJO_INSTANCE}" --name "${FORGEJO_RUNNER_NAME}" --token "${FORGEJO_RUNNER_TOKEN}" && break ;
-            sleep 1 ;
-          done ;
-          forgejo-runner generate-config > config.yml ;
-          sed -i -e "s|network: .*|network\: host|" config.yml ;
-          sed -i -e "s|labels: \[\]|labels\: \[\"docker:docker://alpine:3.18\"\]|" config.yml ;
-          chown -R 1000:1000 /data 
-          '
-    networks:
-      - 1panel-network
+volumes:
+  forgejo-runner-data:
+    external: true
 
-  docker_in_docker:
-    image: docker:dind
-    container_name: ${CONTAINER_NAME}-docker
-    privileged: true
-    command: [ "dockerd", "-H", "tcp://0.0.0.0:2375", "--tls=false" ]
-    networks:
-      - 1panel-network
 networks:
   1panel-network:
     external: true
