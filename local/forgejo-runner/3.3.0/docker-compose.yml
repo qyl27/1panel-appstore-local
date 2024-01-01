@@ -1,0 +1,23 @@
+version: '3'
+services:
+  forgejo-runner:
+    image: code.forgejo.org/forgejo/runner:3.3.0
+    container_name: ${CONTAINER_NAME}
+    volumes:
+      - forgejo_runner_data:/data
+    command: "forgejo-runner daemon"
+    labels:
+      createdBy: "Apps"
+    restart: always
+    networks:
+      - forgejo_runner_network
+    environment:
+      DOCKER_HOST: tcp://forgejo_runner_docker_in_docker:2375
+
+volumes:
+  forgejo_runner_data:
+    external: true
+
+networks:
+  forgejo_runner_network:
+    external: true
