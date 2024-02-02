@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mautrix-telegram:
+    image: dock.mau.dev/mautrix/telegram:0.15.1
+    container_name: ${CONTAINER_NAME}
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    restart: always
+    networks:
+      - 1panel-network
+    volumes:
+      - ./mautrix_telegram:/data:z
+    labels:
+      createdBy: "Apps"
+networks:
+  1panel-network:
+    external: true

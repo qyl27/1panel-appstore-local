@@ -1,0 +1,13 @@
+additionalProperties:
+    key: mautrix-telegram
+    name: mautrix-telegram
+    tags:
+        - Tool
+    shortDescZh: Telegram 和 Matrix 的消息转发桥。
+    shortDescEn: A message bridge between Telegram and Matrix.
+    type: tool
+    crossVersionUpdate: true
+    limit: 0
+    website: https://matrix.to/#/#telegram:maunium.net
+    github: https://github.com/mautrix/telegram
+    document: https://docs.mau.fi/bridges/general/docker-setup.html
