@@ -1,7 +1,7 @@
 version: '3'
 services:
   mautrix-telegram:
-    image: dock.mau.dev/mautrix/telegram:0.15.1
+    image: dock.mau.dev/mautrix/telegram:v0.15.1
     container_name: ${CONTAINER_NAME}
     environment:
       - USER_UID=1000
